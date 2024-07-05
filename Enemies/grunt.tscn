@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4pwh4qgeodgv"]
+
+[ext_resource type="Script" path="res://Enemies/grunt.gd" id="1_rohku"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yqpcy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_st5x2"]
+
+[node name="Grunt" type="CharacterBody3D" groups=["Enemies"]]
+script = ExtResource("1_rohku")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.545009, 0, 0, 0, 0.716755, 0, 0, 0, 0.438861, 0, 0, 0)
+shape = SubResource("BoxShape3D_yqpcy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_st5x2")
+skeleton = NodePath("../..")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0r4sj37o7vdq"]
+[gd_scene load_steps=6 format=3 uid="uid://d0r4sj37o7vdq"]
 
 [ext_resource type="Script" path="res://Player/Scripts/playerCharacter.gd" id="1_gq0gi"]
+[ext_resource type="PackedScene" uid="uid://cm4pv037jh24f" path="res://Weapons/Automag/automag.tscn" id="2_l0cx4"]
+[ext_resource type="PackedScene" uid="uid://by1xkqh8pogde" path="res://playerHUD.tscn" id="3_1nli2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_no5nq"]
 
@@ -18,5 +20,11 @@ mesh = SubResource("CapsuleMesh_rvxd1")
 [node name="Neck" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413032, 0)
-fov = 90.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.822197, 0)
+
+[node name="automag" parent="Neck/Camera3D" instance=ExtResource("2_l0cx4")]
+transform = Transform3D(0.0051075, 0, 0.200313, 0, 0.165771, 0, -0.111616, 0, 0.00916621, 0.980979, -1.47584, -1.51081)
+
+[node name="HUD" parent="Neck/Camera3D" instance=ExtResource("3_1nli2")]
+offset_left = -1.0
+offset_right = -1.0
