@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbgldo6fqrbkl"]
+
+[ext_resource type="PackedScene" uid="uid://d0r4sj37o7vdq" path="res://Player/playerCharacter.tscn" id="1_t7u13"]
+[ext_resource type="PackedScene" uid="uid://3trddi64edqq" path="res://world_environment.tscn" id="1_tr7ak"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2sgnc"]
+lightmap_size_hint = Vector2i(12, 12)
+
+[sub_resource type="Skin" id="Skin_18qb0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o11uv"]
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0.172549, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pqw3t"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8cgr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pxkgu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwhyf"]
+
+[node name="DEV_WORLD" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_tr7ak")]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_2sgnc")
+skin = SubResource("Skin_18qb0")
+surface_material_override/0 = SubResource("StandardMaterial3D_o11uv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqw3t")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_t7u13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.466, 0)
+directional_shadow_mode = 0
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.24817, 1.55074, 0)
+mesh = SubResource("BoxMesh_x8cgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube"]
+physics_material_override = SubResource("PhysicsMaterial_pxkgu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D"]
+shape = SubResource("BoxShape3D_bwhyf")

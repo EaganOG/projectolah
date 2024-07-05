@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3trddi64edqq"]
+
+[sub_resource type="Environment" id="Environment_us6j3"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_us6j3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.635337, 0.772235, 0, -0.772235, 0.635337, 0, 1.31236, 0.969715)
+light_color = Color(0.810743, 0.802931, 0, 1)
+light_energy = 1.457
